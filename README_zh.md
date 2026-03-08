@@ -191,6 +191,32 @@ JR_controller = JoyconRobotics(
 - 同时重启计算机和Joy-Con  
 - ⚠ Ubuntu蓝牙兼容性因设备而异
 
+### Q3: Ubuntu 24.04 修复与适配
+**解决方案：**
+- 修改因内核冲突的文件
+```bash
+sudo gedit /var/lib/dkms/nintendo/3.2/source/src/hid-nintendo.c
+# 把#include <asm/unaligned.h>改成#include <linux/unaligned.h>
+
+# 重新编译
+sudo dkms install nintendo/3.2
+
+. script/fix_ubuntu_24_04.sh
+make install
+```
+
+### 04: Ubuntu22.04 蓝牙连上之后只震动一下就停止震动（不正确）
+**解决方案：**
+- 关闭VT（ Intel Virtualization Technology 英特尔虚拟化技术）
+- 运行 auto_setup_joycon.sh检修测试
+```bash
+. script/auto_setup_joycon.sh
+```
+
+### 05: 电脑有蓝牙适配器，但是连不上蓝牙
+**解决方案：**
+- 进入BIOS关闭安全启动（用常识关机重启按F2）
+
 ---
 
 ## 💡 兼容性列表

@@ -195,6 +195,32 @@ JR_controller = JoyconRobotics(
 - Restart both computer and Joy-Con  
 - ⚠ Ubuntu Bluetooth compatibility can vary by device
 
+### Q3: Fixes and Adaptation for Ubuntu 24.04
+**Solution:**
+- Modify the file that conflicts with the kernel:
+```bash
+sudo gedit /var/lib/dkms/nintendo/3.2/source/src/hid-nintendo.c
+# Change `#include <asm/unaligned.h>` to `#include <linux/unaligned.h>`
+
+# Rebuild
+sudo dkms install nintendo/3.2
+
+. script/fix_ubuntu_24_04.sh
+make install
+```
+
+### Q4: On Ubuntu 22.04 the Joy-Con vibrates once then stops (incorrect)
+**Solution:**
+- Disable VT (Intel Virtualization Technology) in your BIOS.
+- Run the auto-setup diagnostic script:
+```bash
+. auto_setup_joycon.sh
+```
+
+### Q5: Computer has a Bluetooth adapter but cannot connect
+**Solution:**
+- Disable Secure Boot in the BIOS (typically enter BIOS by rebooting and pressing F2).
+
 ---
 
 ## 💡 Compatibility
