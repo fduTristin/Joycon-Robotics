@@ -223,10 +223,10 @@ class JoyconRobotics:
         self.button_control = 0
         
         # Allow both standard and non-standard serial formats for robotics
-        if device_serial != JOYCON_SERIAL_SUPPORT and self.joycon_id != None:
-            # Check if it's a valid MAC address format (alternative serial format)
-            if len(self.joycon_id[2]) != 17 or self.joycon_id[2].count(':') != 5:
-                raise IOError("There is no joycon for robotics")
+        # if device_serial != JOYCON_SERIAL_SUPPORT and self.joycon_id != None:
+        #     # Check if it's a valid MAC address format (alternative serial format)
+        #     if len(self.joycon_id[2]) != 17 or self.joycon_id[2].count(':') != 5:
+        #         raise IOError("There is no joycon for robotics")
         
         self.running = True
         self.lock = threading.Lock()

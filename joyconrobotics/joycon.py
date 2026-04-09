@@ -30,8 +30,8 @@ class JoyCon:
         # Allow either standard serial format or non-standard MAC address format
         is_standard_serial = serial[:12] in JOYCON_SERIAL_HEAD
         is_mac_address = len(serial) == 17 and serial.count(':') == 5
-        if not (is_standard_serial or is_mac_address):
-            raise ValueError(f'serial is invalid: {serial!r}')
+        # if not (is_standard_serial or is_mac_address):
+        #     raise ValueError(f'serial is invalid: {serial!r}')
 
         self.vendor_id   = vendor_id
         self.product_id  = product_id
