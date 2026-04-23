@@ -12,8 +12,8 @@ git clone https://github.com/box2ai-robotics/joycon-robotics.git
 conda activate lerobot
 
 cd joycon-robotics
-pip install -e .
 set PYTHONUTF8=1
+pip install -e .
 
 # 安装hidapi与numpy
 pip install hidapi numpy matplotlib
